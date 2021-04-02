@@ -6,7 +6,9 @@ import LandgingRegisterPage from './User/LandingRegisterPage';
 function LandingPage () {
     return (
         <div class='landing-main'>
-             <LandgingRegisterPage/>
+            <div class='landing-container'>
+                <LandgingRegisterPage/>
+            </div>
         </div>
     );
   }
