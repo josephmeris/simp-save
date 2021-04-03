@@ -20,9 +20,9 @@
   top: 20%;
   background-color: #fff;
   display: inline-block;
-  padding: 20px;
-  height: 30%;
+  padding: 30px;
   border-radius: 25px;
+  width: 40%;
 }
 
 /* todo: move to new css register landing */
@@ -49,5 +49,3 @@
 .sub-category-misc {
   position: absolute;   
 }
-
-
