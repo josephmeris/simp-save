@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -12,15 +12,28 @@ import {hookUserRegister} from '../../actions';
 import { useDispatch } from 'react-redux';
 
 function LandingRegisterPage () {
+      //#region Control Input States
+      const [userEmail, setEmail] = useState(); 
+      //#endregion
+     
+      //#region  React/ Redux Hooks
       const history = useHistory();
       const dispatch = useDispatch();
-      let textInput = React.createRef();     
-
+      //#endregion
+     
+      //#region Control Event Hooks
       const onRegisterClick = () => {
            history.push('./userregisterportal');
-           dispatch (hookUserRegister("josephbennymeris@gmail.com"));
-       }    
+           if (userEmail) {
+             dispatch (hookUserRegister(userEmail));
+           }
+       }
 
+       const onEmailChange = (e) => {
+            setEmail(e.target.value);
+       }
+       //#endregion
+       
       return (
         <div id="main-container-landing-register" class='landing'>
            <div><Typography variant="h6"> I am Saving For... </Typography></div>  
@@ -68,7 +81,7 @@ function LandingRegisterPage () {
            </div>   
            <div id ='sub-category3' class='sub-category-misc'>
                <div class='modular-row'>
-                   <div class='modular-column'><TextField ref={textInput} id="user-email" label="Email Address" /></div>    
+                   <div class='modular-column'><TextField name="userEmail" onChange = {onEmailChange} value={userEmail || ""} label="Email Address" /></div>    
                    <div class='modular-column'><Button variant="contained" color="primary" onClick={onRegisterClick}>  Sign Up!  </Button></div>                
                </div>
            </div>     
