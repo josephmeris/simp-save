@@ -22,12 +22,17 @@ class UserMainDashboardComponent extends Component {
       return (
           <div class='main-dashboard-container'>
               <Grid container spacing={2}>
-                    <Grid item xs={12}></Grid>
-                    <Grid item> <Avatar className={classes.orange} src=""></Avatar></Grid>
-                    <Grid item xs={3}> John Lloyd Cruz</Grid>
-                    <Grid item xs={12}> <GoalsSummary /></Grid>
-                    <Grid item xs={4}> <UpcomingEvents /></Grid>
-                    <Grid item xs={4}> Buckets (coming soon) </Grid>
+              <Grid item xs = {2}> Sidebar</Grid>
+              <Grid item xs = {10}>
+                <Grid container spacing={2}>
+                        <Grid item xs={12}></Grid>
+                        <Grid item> <Avatar className={classes.orange} src=""></Avatar></Grid>
+                        <Grid item xs={3}> John Lloyd Cruz</Grid>
+                        <Grid item xs={12}> <GoalsSummary /></Grid>
+                        <Grid item xs={4}> <UpcomingEvents /></Grid>
+                        <Grid item xs={4}> Buckets (coming soon) </Grid>
+                </Grid>
+               </Grid>
               </Grid>
           </div>
       )

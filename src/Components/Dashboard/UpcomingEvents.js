@@ -42,8 +42,8 @@ class GoalsSummary extends Component {
                                               <SettingsRoundedIcon />
                                            </IconButton>
                         </Grid>
-                        <Grid item xs={7}></Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={5}></Grid>
+                        <Grid item xs={5}>
                         <InputLabel htmlFor="grid-filter">Show</InputLabel>
                         <Select native id='grid-filter'>
                            <option value={0}>This Month</option>
