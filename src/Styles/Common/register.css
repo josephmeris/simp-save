@@ -1,0 +1,40 @@
+
+h3 {
+    text-align: center;
+}
+
+#portal{
+    flex-grow: 1;
+}
+
+#portal-container {
+    display: inline-block;
+    width: 50%;
+    margin: 2% 25%;
+    background-color: rgba(255, 255,255, 0.75);
+    text-align: left;
+    padding: 1% 1%; 
+    border-radius: 2%;
+    box-sizing: border-box;
+    border: 2px solid gray;
+  }
+
+ 
+  #portal-container > div , #portal-container > h2 {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: left;
+  margin: 0.5%; 
+    
+}
+
+.portal-firstname, .portal-lastname {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+Button {
+   margin: 5% 10%; 
+}
