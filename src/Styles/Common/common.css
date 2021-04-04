@@ -20,9 +20,9 @@
   top: 20%;
   background-color: #fff;
   display: inline-block;
-  padding: 20px;
-  height: 30%;
+  padding: 30px;
   border-radius: 25px;
+  width: 40%;
 }
 
 /* todo: move to new css register landing */
@@ -31,23 +31,25 @@
   margin-top: 10px;
 }
 
-.modular-column {
-  float: left;
-  padding:10px;
-}
-
-.modular-column-space {
-  float: left;
-  width: 50%;
-}
-.modular-row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .sub-category-misc {
   position: absolute;   
 }
 
+/* todo: move to new css for user main components */
+/* todo: conver to sass */
 
+.main-dashboard-container {
+  padding: 20px;
+}
+
+.column {
+  float: left;
+  width: 20%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
 import UserLogin from './Components/User/UserLogin';
 import UserRegisterPortal from './Components/User/UserResgisterPortal';
+import UserMainDashboardComponent from './Components/Dashboard/UserMainDashboardComponent';
 import LandingPage from './Components/LandingPage';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -46,6 +47,7 @@ function App () {
               <Route exact path='/' component = {LandingPage} />
               <Route path='/userregisterportal' component={UserRegisterPortal} />
               <Route path='/userlogin' component={UserLogin} />
+              <Route path='/usermaindashboard' component={UserMainDashboardComponent} />
           </Switch>
       </Router>
     );
