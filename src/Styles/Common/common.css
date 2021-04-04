@@ -31,21 +31,25 @@
   margin-top: 10px;
 }
 
-.modular-column {
-  float: left;
-  padding:10px;
+.sub-category-misc {
+  position: absolute;   
 }
 
-.modular-column-space {
-  float: left;
-  width: 50%;
+/* todo: move to new css for user main components */
+/* todo: conver to sass */
+
+.main-dashboard-container {
+  padding: 20px;
 }
-.modular-row:after {
+
+.column {
+  float: left;
+  width: 20%;
+}
+
+/* Clear floats after the columns */
+.row:after {
   content: "";
   display: table;
   clear: both;
-}
-
-.sub-category-misc {
-  position: absolute;   
 }
