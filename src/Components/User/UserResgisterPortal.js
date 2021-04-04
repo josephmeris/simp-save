@@ -100,7 +100,7 @@ class UserRegisterPortal extends Component {
            <Select
            fullWidth
            size="small"
-        variant="outlined"
+           variant="outlined"
           native
           label="Country"
           inputProps={{
