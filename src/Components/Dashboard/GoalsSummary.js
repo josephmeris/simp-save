@@ -59,6 +59,7 @@ class GoalsSummary extends Component {
               <Grid item xs={6}><Typography className={classes.titleText}>My Goals</Typography></Grid>
               <Grid item xs={6}>   
                    <Button
+                        size='small'
                         variant="outlined"
                         color="primary"
                         className={classes.button}
