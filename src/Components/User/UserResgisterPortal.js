@@ -12,6 +12,8 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 // const useStyles = makeStyles((theme) => ({
 //   formControl: {
@@ -32,17 +34,20 @@ const styles = theme => (
         marginTop: theme.spacing(2),
       },}
 );
-const currencies = [
+const countryDetails= [
   {
     value: 'USD',
+    country: 'United States',
     label: '$',
   },
   {
     value: 'EUR',
+    country: 'Europe',
     label: '€',
   },
   {
     value: 'PHP',
+    country: 'Philippines',
     label: '₱',
   },
  
@@ -54,15 +59,17 @@ class UserRegisterPortal extends Component {
   render() {
     const {classes} = this.props;
     return (
-      <div id="portal">
-        
-        <form id="portal-container">
+      
+     
+      
+        <Paper elevation={3} >
+      <form id="portal-container" >
         
           
            <div><Typography variant="h5">Lets get to know you! </Typography> </div>
             
                 <Grid item xs={4} > <Typography variant="h6"> My Email Address is: </Typography> </Grid>
-                <Grid item xs={6} >  <TextField class="modular-column" id="user-email" label="Email Address" fullWidth /> </Grid>
+                <Grid item xs={6} > <TextField  id="user-email" label="Email Address" fullWidth /> </Grid>
            
             <div><Typography variant="h6">  I am Saving for: </Typography></div>
             <div><Typography variant="h7"> (Changed your mind? dont worry, we can change that after your login) </Typography></div>
@@ -97,22 +104,22 @@ class UserRegisterPortal extends Component {
          <Grid item xs={6} ><div><Typography variant="h6">  I am from:                     </Typography></div> </Grid>
          <Grid item xs={5} ><div><Typography variant="h6"> Currency: </Typography></div> </Grid>
          <Grid item xs={6} >
-           <Select
-           fullWidth
-           size="small"
-           variant="outlined"
-          native
-          label="Country"
-          inputProps={{
-            name: 'country',
-            id: 'outlined-country-native-simple',
+         <TextField
+          fullWidth
+          size="small"
+          id="outlined-select-country"
+          select
+          SelectProps={{
+            native: true,
           }}
+           variant="outlined"
         >
-          <option aria-label="Select Country" value="" />
-          <option value="Philippines">Philippines</option>
-          <option value="United States">United States</option>
-          <option value="Europe">Europe</option>
-        </Select>
+          {countryDetails.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.country}
+            </option>
+          ))}
+        </TextField>
       
       </Grid>
       <Grid item xs={5} >
@@ -126,7 +133,7 @@ class UserRegisterPortal extends Component {
           }}
            variant="outlined"
         >
-          {currencies.map((option) => (
+          {countryDetails.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
@@ -134,12 +141,19 @@ class UserRegisterPortal extends Component {
         </TextField>
         </Grid>
 
-        <Grid container justify="center">
+        <Grid container justify="center" container spacing={3}>
+        <Grid item xs={12}></Grid>
+        <Grid item xs={4} >
         <Button variant="outlined">Reset All Fields</Button>
+        </Grid>
+        <Grid item xs={4} >
         <Button variant="outlined">Let's Start Saving!</Button>
         </Grid>
+        </Grid>
         </form>
-        </div>
+        </Paper>
+       
+        
     );
   }
 }
