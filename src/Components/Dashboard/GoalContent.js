@@ -11,7 +11,7 @@ const styles = theme => ({
     totalExpenses: {
       padding: theme.spacing(1),
       color: "white",
-      background: "#74b9ff"
+      background: "#0984e3"
     },
     subText: {
         fontSize: 12
