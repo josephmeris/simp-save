@@ -6,6 +6,13 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
 import Button from '@material-ui/core/Button';
+import GoalContent from './GoalContent';
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = theme => ({
       paper: {
@@ -14,23 +21,8 @@ const styles = theme => ({
       totalExpenses: {
         padding: theme.spacing(1),
         color: "white",
-        background: "#74b9ff"
+        background: "#2d3436"
       },
-      goal1: {
-        padding: theme.spacing(1),
-        color: "white",
-        background: "#fab1a0"
-      },
-      goal2: {
-        padding: theme.spacing(1),
-        color: "white",
-        background: "#00cec9"
-      },
-      goal3: {
-        padding: theme.spacing(1),
-        color: "white",
-        background: "#a29bfe"
-      }, 
       subText: {
           fontSize: 12
       },
@@ -48,11 +40,35 @@ const styles = theme => ({
   });
 
 class GoalsSummary extends Component {
-    render() {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      goals: [],
+      isAddOpen: false
+    };
+  }
+    render() { 
     const { classes } = this.props;
-    const mainComponentSize = 2;
-  
+    const addNewGoal =()=> {
+      this.setState({ isAddOpen: this.state.isAddOpen = true});
+    } 
+
+    const saveGoal =() => {
+      //  restrict to 4 for the meantime
+       if (this.state.goals.length === 4) {
+         return;
+       }
+       const newGoal = {'goalHeader': 'Dynamic Goal', 'totalAmount': '20,000,000.00', 'totalSaved': '6,000.00', 'percentage': '10', 'remainingDays': '4', 'remainingMonths': '20'};
+       this.setState({
+            goals: [... this.state.goals, newGoal]
+       });
+       this.setState({ isAddOpen: this.state.isAddOpen = false});
+    }
+
+    const onDialogClose =() => {
+      this.setState({ isAddOpen: this.state.isAddOpen = false});
+    }
+
     return (
           <div>
               <Grid container spacing={2}>
@@ -63,14 +79,14 @@ class GoalsSummary extends Component {
                         variant="outlined"
                         color="primary"
                         className={classes.button}
-                        startIcon={<SettingsRoundedIcon />}                                                  >
-                        Manage
+                        onClick={addNewGoal}>
+                        Add
                   </Button>
                 </Grid>
               </Grid>
               <Grid container spacing={2}>
-               <Grid item xs={12} />
-                <Grid item xs={mainComponentSize}>
+              {/* Static Display */}
+              <Grid item xs={2}>
                     <Paper elevation={3} className={classes.totalExpenses}> 
                         <Grid container spacing={3}>
                             <Grid item xs={12}>Total Monthly Expenses </Grid>
@@ -80,41 +96,30 @@ class GoalsSummary extends Component {
                             <Grid item xs={6}><Typography className={classes.subText}>PHP 12,000.00</Typography></Grid>
                         </Grid>
                     </Paper>
-                </Grid>
-                <Grid item xs={mainComponentSize}>
-                    <Paper elevation={3} className={classes.goal1}> 
-                        <Grid container spacing={3}>
-                            <Grid item xs={12}>Trip to Europe 2022 </Grid>
-                            <Grid item xs={6} className={classes.percentageDisplay}> 25% </Grid>
-                            <Grid item xs={6}><Typography className={classes.mainAmountDisplay}>PHP 200,000.00</Typography></Grid>
-                            <Grid item xs={5}><Typography className={classes.subText}>24 mos 0 days</Typography></Grid>
-                            <Grid item xs={7}><Typography className={classes.subText}>PHP 800,000.00</Typography></Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>
-                <Grid item xs={mainComponentSize}>
-                    <Paper elevation={3} className={classes.goal2}> 
-                        <Grid container spacing={3}>
-                            <Grid item xs={12}>New Car </Grid>
-                            <Grid item xs={6} className={classes.percentageDisplay}> 10% </Grid>
-                            <Grid item xs={6}><Typography className={classes.mainAmountDisplay}>PHP 206,000.00</Typography> </Grid>
-                            <Grid item xs={5}><Typography className={classes.subText}>11 mos 2 days</Typography></Grid>
-                            <Grid item xs={7}><Typography className={classes.subText}>PHP 2,000,000.00</Typography> </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>
-                <Grid item xs={mainComponentSize}>
-                     <Paper elevation={3} className={classes.goal3}> 
-                        <Grid container spacing={3}>
-                            <Grid item xs={12}>House Renovation </Grid>
-                            <Grid item xs={6} className={classes.percentageDisplay}> 13% </Grid>
-                            <Grid item xs={6}><Typography className={classes.mainAmountDisplay}>PHP 116,000.00</Typography> </Grid>
-                            <Grid item xs={5}><Typography className={classes.subText}>12 mos 0 days</Typography> </Grid>
-                            <Grid item xs={7}><Typography className={classes.subText}>PHP 920,000.00</Typography></Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>
               </Grid>
+                  { this.state.goals.map(goal => (            
+                      <GoalContent header={goal.goalHeader} 
+                                   totalAmount={goal.totalAmount}
+                                   totalSaved={goal.totalSaved}
+                                   percentage={goal.percentage}
+                                   remainingDays={goal.remainingDays}
+                                   remainingMonths={goal.remainingMonths}/>
+                  ))}             
+              </Grid>
+
+              <Dialog open={this.state.isAddOpen} onClose={onDialogClose}  aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Add New Goal</DialogTitle>
+        <DialogContent>
+        <Button
+                        size='small'
+                        variant="outlined"
+                        color="primary"
+                        className={classes.button}
+                        onClick={saveGoal}>
+                        Save
+                  </Button>
+          </DialogContent>
+          </Dialog>
           </div>
       )
     };

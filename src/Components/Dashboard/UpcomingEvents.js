@@ -33,17 +33,8 @@ class GoalsSummary extends Component {
                 <Paper elevation={3} className={classes.paper}>
                     <Grid container spacing={1}>
                         <Grid item xs={12}> <Typography className={classes.titleText}>Activity</Typography> </Grid>
-                        <Grid item xs={12}> <Typography className={classes.subText}>My Upcoming Reminders</Typography></Grid>
-                        <Grid item xs={1}> <IconButton aria-label="delete">
-                                              <AddCircleIcon />
-                                           </IconButton> 
-                        </Grid>
-                        <Grid item xs={1}> <IconButton aria-label="Manage">
-                                              <SettingsRoundedIcon />
-                                           </IconButton>
-                        </Grid>
-                        <Grid item xs={7}></Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={12}> <Typography className={classes.subText}>My Upcoming Reminders</Typography></Grid>                      
+                        <Grid item xs={5}>
                         <InputLabel htmlFor="grid-filter">Show</InputLabel>
                         <Select native id='grid-filter'>
                            <option value={0}>This Month</option>
@@ -52,7 +43,15 @@ class GoalsSummary extends Component {
                            <option value={3}>This Year</option>
                            <option value={3}>All</option>
                          </Select>
-
+                        </Grid>
+                        <Grid item xs={4}></Grid>
+                        <Grid item xs={1}> <IconButton aria-label="delete">
+                                              <AddCircleIcon />
+                                           </IconButton> 
+                        </Grid>
+                        <Grid item xs={1}> <IconButton aria-label="Manage">
+                                              <SettingsRoundedIcon />
+                                           </IconButton>
                         </Grid>
                         <Grid item xs={12}>
                             <EventsGrid />
