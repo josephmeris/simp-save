@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from '@material-ui/core/Avatar';
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
+import BucketsChart from './BucketsChart';
 
 const styles = theme => ({
     orange: {
@@ -30,7 +31,7 @@ class UserMainDashboardComponent extends Component {
                         <Grid item xs={3}> John Lloyd Cruz</Grid>
                         <Grid item xs={12}> <GoalsSummary /></Grid>
                         <Grid item xs={4}> <UpcomingEvents /></Grid>
-                        <Grid item xs={4}> Buckets (coming soon) </Grid>
+                        <Grid item xs={4}> <BucketsChart /></Grid>
                 </Grid>
                </Grid>
               </Grid>
