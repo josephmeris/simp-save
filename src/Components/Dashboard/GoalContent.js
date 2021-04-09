@@ -11,7 +11,7 @@ const styles = theme => ({
     totalExpenses: {
       padding: theme.spacing(1),
       color: "white",
-      background: "#a29bfe"
+      background: "#74b9ff"
     },
     subText: {
         fontSize: 12
@@ -28,15 +28,16 @@ const styles = theme => ({
 class GoalContent extends Component {
     render() {
         const { classes } = this.props;
+        
         return (
             <Grid item xs={2}>
                     <Paper elevation={3} className={classes.totalExpenses}> 
                         <Grid container spacing={3}>
                             <Grid item xs={12}> {this.props.header} </Grid>
-                            <Grid item xs={6} className={classes.percentageDisplay}> 50% </Grid>
-                            <Grid item xs={6}><Typography className={classes.mainAmountDisplay}>PHP 6,000.00</Typography> </Grid>
-                            <Grid item xs={6}><Typography className={classes.subText}>Remaining Budget</Typography></Grid>
-                            <Grid item xs={6}><Typography className={classes.subText}>PHP 12,000.00</Typography></Grid>
+                            <Grid item xs={6} className={classes.percentageDisplay}> {this.props.percentage}% </Grid>
+                            <Grid item xs={6}><Typography className={classes.mainAmountDisplay}>PHP {this.props.totalSaved}</Typography> </Grid>
+                            <Grid item xs={6}><Typography className={classes.subText}>{this.props.remainingMonths} mos {this.props.remainingDays} days</Typography></Grid>
+                            <Grid item xs={6}><Typography className={classes.subText}>PHP {this.props.totalAmount}</Typography></Grid>
                         </Grid>
                     </Paper>
             </Grid>

@@ -15,7 +15,7 @@ const styles = theme => ({
       totalExpenses: {
         padding: theme.spacing(1),
         color: "white",
-        background: "#74b9ff"
+        background: "#2d3436"
       },
       subText: {
           fontSize: 12
@@ -40,7 +40,7 @@ class GoalsSummary extends Component {
       goals: []
     };
   }
-    render() {
+    render() { 
   
     const { classes } = this.props;
     const addNewGoal =()=> {
@@ -48,7 +48,7 @@ class GoalsSummary extends Component {
        if (this.state.goals.length === 4) {
          return;
        }
-       const newGoal = {'goalHeader': 'Dynamic Goal'};
+       const newGoal = {'goalHeader': 'Dynamic Goal', 'totalAmount': '20,000,000.00', 'totalSaved': '6,000.00', 'percentage': '10', 'remainingDays': '4', 'remainingMonths': '20'};
        this.setState({
             goals: [... this.state.goals, newGoal]
        });
@@ -83,7 +83,12 @@ class GoalsSummary extends Component {
                     </Paper>
               </Grid>
                   { this.state.goals.map(goal => (            
-                      <GoalContent header={goal.goalHeader}/>
+                      <GoalContent header={goal.goalHeader} 
+                                   totalAmount={goal.totalAmount}
+                                   totalSaved={goal.totalSaved}
+                                   percentage={goal.percentage}
+                                   remainingDays={goal.remainingDays}
+                                   remainingMonths={goal.remainingMonths}/>
                   ))}             
               </Grid>
           </div>
