@@ -48,7 +48,7 @@ class GoalsSummary extends Component {
        if (this.state.goals.length === 4) {
          return;
        }
-       const newGoal = {'goal': 'test'};
+       const newGoal = {'goalHeader': 'Dynamic Goal'};
        this.setState({
             goals: [... this.state.goals, newGoal]
        });
@@ -83,7 +83,7 @@ class GoalsSummary extends Component {
                     </Paper>
               </Grid>
                   { this.state.goals.map(goal => (            
-                      <GoalContent />
+                      <GoalContent header={goal.goalHeader}/>
                   ))}             
               </Grid>
           </div>

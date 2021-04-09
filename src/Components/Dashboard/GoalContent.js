@@ -32,7 +32,7 @@ class GoalContent extends Component {
             <Grid item xs={2}>
                     <Paper elevation={3} className={classes.totalExpenses}> 
                         <Grid container spacing={3}>
-                            <Grid item xs={12}>Dynamic Goal </Grid>
+                            <Grid item xs={12}> {this.props.header} </Grid>
                             <Grid item xs={6} className={classes.percentageDisplay}> 50% </Grid>
                             <Grid item xs={6}><Typography className={classes.mainAmountDisplay}>PHP 6,000.00</Typography> </Grid>
                             <Grid item xs={6}><Typography className={classes.subText}>Remaining Budget</Typography></Grid>
