@@ -8,6 +8,12 @@ import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
 import Button from '@material-ui/core/Button';
 import GoalContent from './GoalContent';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 const styles = theme => ({
       paper: {
         padding: theme.spacing(2),
@@ -37,13 +43,17 @@ class GoalsSummary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      goals: []
+      goals: [],
+      isAddOpen: false
     };
   }
     render() { 
-  
     const { classes } = this.props;
     const addNewGoal =()=> {
+      this.setState({ isAddOpen: this.state.isAddOpen = true});
+    } 
+
+    const saveGoal =() => {
       //  restrict to 4 for the meantime
        if (this.state.goals.length === 4) {
          return;
@@ -52,8 +62,13 @@ class GoalsSummary extends Component {
        this.setState({
             goals: [... this.state.goals, newGoal]
        });
+       this.setState({ isAddOpen: this.state.isAddOpen = false});
     }
-  
+
+    const onDialogClose =() => {
+      this.setState({ isAddOpen: this.state.isAddOpen = false});
+    }
+
     return (
           <div>
               <Grid container spacing={2}>
@@ -91,6 +106,20 @@ class GoalsSummary extends Component {
                                    remainingMonths={goal.remainingMonths}/>
                   ))}             
               </Grid>
+
+              <Dialog open={this.state.isAddOpen} onClose={onDialogClose}  aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Add New Goal</DialogTitle>
+        <DialogContent>
+        <Button
+                        size='small'
+                        variant="outlined"
+                        color="primary"
+                        className={classes.button}
+                        onClick={saveGoal}>
+                        Add
+                  </Button>
+          </DialogContent>
+          </Dialog>
           </div>
       )
     };
