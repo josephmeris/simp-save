@@ -116,7 +116,7 @@ class GoalsSummary extends Component {
                         color="primary"
                         className={classes.button}
                         onClick={saveGoal}>
-                        Add
+                        Save
                   </Button>
           </DialogContent>
           </Dialog>
