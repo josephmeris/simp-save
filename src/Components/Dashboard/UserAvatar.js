@@ -22,7 +22,7 @@ class UserAvatar extends Component {
             <Grid item> 
                 <Avatar className={classes.orange} src={loyd}></Avatar>
             </Grid>
-            <Grid item xs={3}> John Lloyd Cruz</Grid>
+            <Grid item xs={8}> John Lloyd Cruz</Grid>
             </Grid>
         );
     }

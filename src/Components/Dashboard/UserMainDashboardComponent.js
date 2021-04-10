@@ -7,13 +7,10 @@ import { withStyles } from "@material-ui/core/styles";
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
 import BucketsChart from './BucketsChart';
 import UserAvatar from './UserAvatar';
+import SideBar from './SideBar';
 
 const styles = theme => ({
-    orange: {
-        color: theme.palette.getContrastText(deepOrange[500]),
-        width: theme.spacing(7),
-        height: theme.spacing(7),
-      },
+    
 });
 
 
@@ -23,11 +20,11 @@ class UserMainDashboardComponent extends Component {
       return (
           <div class='main-dashboard-container'>
               <Grid container spacing={2}>
-              <Grid item xs = {2}> Sidebar</Grid>
+              <Grid item xs = {2}> <SideBar /></Grid>
               <Grid item xs = {10}>
                 <Grid container spacing={2}>
                         <Grid item xs={12}></Grid>
-                        <Grid item xs={12}><UserAvatar /></Grid>
+                        <Grid item xs={12}></Grid>
                         <Grid item xs={12}> <GoalsSummary /></Grid>
                         <Grid item xs={4}> <UpcomingEvents /></Grid>
                         <Grid item xs={4}> <BucketsChart /></Grid>

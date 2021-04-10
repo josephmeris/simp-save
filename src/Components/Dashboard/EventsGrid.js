@@ -18,7 +18,7 @@ function createData(date, event) {
 
 const rows = [
   createData('April 20', 'Deposit for Loan'),
-  createData('April 30', 'Pay Bills'),
+  createData('April 30', 'Citi Bank Due'),
 ];
 
 export default function BasicTable() {
