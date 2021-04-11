@@ -7,12 +7,18 @@ import Typography from '@material-ui/core/Typography';
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
 import Button from '@material-ui/core/Button';
 import GoalContent from './GoalContent';
-
+import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Slider from '@material-ui/core/Slider';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Input from '@material-ui/core/Input';
+import FormControl from '@material-ui/core/FormControl';
+import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 
 const styles = theme => ({
       paper: {
@@ -38,6 +44,60 @@ const styles = theme => ({
         fontSize: 20
     }
   });
+  const BudgetSlider = withStyles({
+    root: {
+      color: '##636e72',
+      height: 8,
+    },
+    thumb: {
+      height: 24,
+      width: 24,
+      backgroundColor: '#fff',
+      border: '2px solid currentColor',
+      marginTop: -8,
+      marginLeft: -12,
+      '&:focus, &:hover, &$active': {
+        boxShadow: 'inherit',
+      },
+    },
+    active: {},
+    valueLabel: {
+      left: 'calc(-50% + 4px)',
+    },
+    track: {
+      height: 8,
+      borderRadius: 4,
+    },
+    rail: {
+      height: 8,
+      borderRadius: 4,
+    },
+  })(Slider);
+
+  const GoalDuration = [
+    {
+      value: 'Days',
+      duration: 'Days',
+      max: 30,
+      
+    },
+    {
+      value: 'Weeks',
+      duration: 'Weeks',
+      max: 52,
+    },
+  
+    {
+      value: 'Month',
+      duration: 'Month',
+      max: 12,
+    },
+    {
+      value: 'Years',
+      duration: 'Years',
+      max: 25,
+      
+    }]
 
 class GoalsSummary extends Component {
   constructor(props) {
@@ -110,7 +170,45 @@ class GoalsSummary extends Component {
               <Dialog open={this.state.isAddOpen} onClose={onDialogClose}  aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add New Goal</DialogTitle>
         <DialogContent>
-        <Button
+                    <Typography  size='small'>Goal: </Typography> 
+          <TextField
+          id="standard-read-only-input"
+          placeholder="Your Goal"
+          InputProps={{
+            readOnly: false,
+          }}
+        />
+       
+                  <div />
+      <Typography gutterBottom>Target Amount</Typography>
+      
+          <Input
+            id="standard-adornment-amount"
+            type='numeric'
+           // value={values.amount}
+           // onChange={handleChange('amount')}
+           thousandSeparator={true}
+            startAdornment={<InputAdornment position="start">₱</InputAdornment>}
+          />
+          <Typography >Target Duration</Typography>
+          <TextField
+          fullWidth
+          size="small"
+          id="outlined-select-country"
+          select
+          SelectProps={{
+            native: true,
+          }}
+           variant="filled"
+        >
+          {GoalDuration.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.duration}
+            </option>
+          ))}
+        </TextField>
+    <BudgetSlider valueLabelDisplay="auto" aria-label="Budget Slider" defaultValue={0} max={GoalDuration.max} />
+    <Button
                         size='small'
                         variant="outlined"
                         color="primary"
@@ -120,6 +218,7 @@ class GoalsSummary extends Component {
                   </Button>
           </DialogContent>
           </Dialog>
+          
           </div>
       )
     };
